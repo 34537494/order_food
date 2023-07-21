@@ -162,6 +162,7 @@
 
 
         function addToCart(name, price) {
+            // 判断是否选择，如果没有选择就添加进购物车，选择了就剔除购物车
             if (shoppingList.indexOf(name) === -1) {
                 shoppingList.push(name);
                 priceList.push(price);
@@ -176,16 +177,17 @@
 
         function checkOut() {
             var cartStr = "";
+            // 将购物车列表和价格列表展示在dialog的界面上
             for (let i = 0; i < shoppingList.length; i++) {
                 cartStr += "<div class='checkOutList'> "+ shoppingList[i] + "………………￥" + priceList[i] + "</div>";
             };
             console.log(cartStr);
 
             // 拼接完字符串数组后用innerHTML把它渲染到页面中
-            console.log(document.querySelector("#checkOutCart").innerHTML)
-            document.querySelector("#checkOutCart").innerHTML = cartStr;
+            document.getElementById("checkOutCart").innerHTML = cartStr;
+            // 使dialog界面展示出来
+            document.getElementById("dialog").showModal();
 
-            document.querySelector("#dialog").showModal();
         }
     </script>
 
