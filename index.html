@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            margin: 10px;
+            display: flex;
+        }
+
+        .menu{
+            width: 22rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .type{
+            height: 5rem;
+            width: 20rem;
+            margin: 0.5rem 0;
+        }
+
+        .dish{
+            display: inline-block;
+            height: 10rem;
+            width: 20rem;
+            background-color: aqua;
+            margin: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 菜单 -->
+    <div class="menu">
+        <button class="type" onclick="openTab(event, 's1')">品类1</button>
+        <button class="type" onclick="openTab(event, 's2')">品类2</button>
+        <button class="type" onclick="openTab(event, 's3')">品类3</button>
+    </div>
+
+    <!-- 菜品 -->
+    <div class="show">
+        <div class="dishes" id="s1">
+            <div class="dish" id="d1">
+                <div class="img"></div>
+                <div class="name"></div>
+                <div class="price"></div>
+            </div>
+            <div class="dish" id="d2">
+                <div class="img"></div>
+                <div class="name"></div>
+                <div class="price"></div>
+            </div>
+            <div class="dish" id="d3">
+                <div class="img"></div>
+                <div class="name"></div>
+                <div class="price"></div>
+            </div>
+            <div class="dish" id="d4">
+                <div class="img"></div>
+                <div class="name"></div>
+                <div class="price"></div>
+            </div>
+        </div>
+        <div class="dishes" id="s2">
+            <div class="dish" id="d5">
+                <div class="img"></div>
+                <div class="name"></div>
+                <div class="price"></div>
+            </div>
+            <div class="dish" id="d6">
+                <div class="img"></div>
+                <div class="name"></div>
+                <div class="price"></div>
+            </div>
+            <div class="dish" id="d7">
+                <div class="img"></div>
+                <div class="name"></div>
+                <div class="price"></div>
+            </div>
+        </div>
+        <div class="dishes" id="s3">
+            <div class="dish" id="d8">
+                <div class="img"></div>
+                <div class="name"></div>
+                <div class="price"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("dishes");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("type");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    document.getElementsByClassName("type")[0].click();
+</script>
+
+</body>
+</html>
