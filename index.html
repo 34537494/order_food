@@ -263,26 +263,36 @@
         }
 
         function addToCart(name, price, numId) {
-            // 判断是否选择，如果没有选择就添加进购物车，如果有则增加数量
-            if(document.getElementById(numId).value <= 0) {
+            // 判断数量是否正确，不正确重置一下
+            if (document.getElementById(numId).value <= 0) {
                 alert('请选择正确的数量再进行提交');
-                document.getElementById(numId).value = 0;
+                // 如果数据错误并且原本有数据，则将原本的数据再进行展示，否则为0
+                if(shoppingList.indexOf(name) !== -1) {
+                    document.getElementById(numId).value =shoppingNum[shoppingList.indexOf(name)];
+                }
+                else {
+                    document.getElementById(numId).value =0;
+
+                }
                 return;
             }
+            // 判断是否选择，如果没有选择就添加进购物车，如果有则增加数量
             if (shoppingList.indexOf(name) === -1) {
                 shoppingList.push(name);
                 priceList.push(price);
-                console.log(document.getElementById(numId).value)
+                // console.log(document.getElementById(numId).value)
                 shoppingNum.push(document.getElementById(numId).value);
             }
             else {
-                shoppingNum[shoppingNum.indexOf(name) - 1] = document.getElementById(numId).value;
+                shoppingNum[shoppingList.indexOf(name) - 1] = document.getElementById(numId).value;
             }
         }
-        function deleteFromCart(name,numId) {
+        function deleteFromCart(name, numId) {
+            // 如果不存在菜品提示
             if (shoppingList.indexOf(name) === -1) {
                 alert("你没有选择该菜品无法清空")
             }
+            // 如果已经在菜谱中则清除数据
             else {
                 shoppingList.splice(shoppingList.indexOf(name), 1);
                 priceList.splice(shoppingList.indexOf(name), 1);
