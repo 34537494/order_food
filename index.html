@@ -8,6 +8,13 @@
             padding: 0;
         }
 
+        .hedaer {
+            height: 3rem;
+            width: 100%;
+            font-size: 2rem;
+            /* background-color: rgba(246, 255, 0,0.7); */
+        }
+
         .container {
             margin: 10px;
             display: flex;
@@ -80,6 +87,7 @@
 </head>
 
 <body>
+    <div class="hedaer">点餐系统</div>
     <div class="container">
         <!-- 菜单 -->
         <div class="menu">
@@ -216,7 +224,9 @@
             </div>
         </div>
         <div class="cart">
-            <button class="cartButton" onclick="checkOut()">结算</button>
+            <button class="cartButton" onclick="checkOut()">
+                <img src="./src/img/cart.jpg" width="50" alt="结算">
+            </button>
         </div>
     </div>
 
@@ -249,6 +259,7 @@
 
         document.getElementsByClassName("type")[0].click();
 
+        // 选择菜品数量的增减键的方法
         function addNum(numId) {
             document.getElementById(numId).value = parseInt(document.getElementById(numId).value) + 1;
         }
@@ -267,11 +278,11 @@
             if (document.getElementById(numId).value <= 0) {
                 alert('请选择正确的数量再进行提交');
                 // 如果数据错误并且原本有数据，则将原本的数据再进行展示，否则为0
-                if(shoppingList.indexOf(name) !== -1) {
-                    document.getElementById(numId).value =shoppingNum[shoppingList.indexOf(name)];
+                if (shoppingList.indexOf(name) !== -1) {
+                    document.getElementById(numId).value = shoppingNum[shoppingList.indexOf(name)];
                 }
                 else {
-                    document.getElementById(numId).value =0;
+                    document.getElementById(numId).value = 0;
 
                 }
                 return;
